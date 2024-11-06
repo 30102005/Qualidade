@@ -15,14 +15,14 @@ typedef struct Task {
 Task* create_task(const char* name, int priority) {
     // Verificar se os parâmetros são válidos
     if (name == NULL || name[0] == '\0' || priority < 0) {
-        printf("Invalid task parameters: name is empty or priority is invalid\n");
+        printf("Parâmetros inválidos da tarefa: nome vazio ou prioridade inválida\n");
         return NULL;
     }
 
     // Alocar memória para a nova tarefa
     Task* new_task = (Task*)malloc(sizeof(Task));
     if (new_task == NULL) {
-        printf("Memory allocation failed\n");
+        printf("Falha na alocação de memória\n");
         return NULL;
     }
 
@@ -36,7 +36,7 @@ Task* create_task(const char* name, int priority) {
 // Função para adicionar uma tarefa na lista
 void add_task(Task** head, Task* new_task) {
     if (new_task == NULL) {
-        printf("Error: Attempt to add a null task\n");
+        printf("Erro: Tentativa de adicionar uma tarefa nula\n");
         return;
     }
 
@@ -54,13 +54,13 @@ void add_task(Task** head, Task* new_task) {
 // Função para imprimir todas as tarefas
 void print_tasks(Task* head) {
     if (head == NULL) {
-        printf("No tasks to display\n");
+        printf("Nenhuma tarefa para exibir\n");
         return;
     }
 
     Task* current = head;
     while (current != NULL) {
-        printf("Task: %s, Priority: %d\n", current->name, current->priority);
+        printf("Tarefa: %s, Prioridade: %d\n", current->name, current->priority);
         current = current->next;
     }
 }
@@ -85,9 +85,9 @@ int main() {
     Task* task_list = NULL;
 
     // Adicionando tarefas à lista com verificação de falha na alocação
-    Task* task1 = create_task("Task 1", 1);
-    Task* task2 = create_task("Task 2", 2);
-    Task* task3 = create_task("Task 3", 3);
+    Task* task1 = create_task("Tarefa 1", 1);
+    Task* task2 = create_task("Tarefa 2", 2);
+    Task* task3 = create_task("Tarefa 3", 3);
 
     if (task1 && task2 && task3) {
         add_task(&task_list, task1);
@@ -100,7 +100,7 @@ int main() {
         // Liberando a memória das tarefas
         free_tasks(task_list);
     } else {
-        printf("Failed to create one or more tasks\n");
+        printf("Falha ao criar uma ou mais tarefas\n");
     }
 
     return 0;
